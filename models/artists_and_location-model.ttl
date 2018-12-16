@@ -1,0 +1,1508 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix km-dev: <http://isi.edu/integration/karma/dev#> .
+
+_:node1cur8rp3px1 a km-dev:R2RMLMapping ;
+	km-dev:sourceName "music artist with location.csv" ;
+	km-dev:modelPublicationTime "1544956011641"^^xsd:long ;
+	km-dev:modelVersion "1.7" ;
+	km-dev:hasInputColumns "[[{\"columnName\":\"latitude\"}],[{\"columnName\":\"artist.name\"}],[{\"columnName\":\"longitude\"}],[{\"columnName\":\"location\"}],[{\"columnName\":\"terms\"}]]" ;
+	km-dev:hasOutputColumns "[[{\"columnName\":\"latitude\"}],[{\"columnName\":\"artist.name\"}],[{\"columnName\":\"longitude\"}],[{\"columnName\":\"uri_artist\"}],[{\"columnName\":\"uri_state\"}],[{\"columnName\":\"terms\"}],[{\"columnName\":\"uri_city\"}],[{\"columnName\":\"city\"}],[{\"columnName\":\"state\"}]]" ;
+	km-dev:hasModelLabel "music artist with location.csv" ;
+	km-dev:hasWorksheetHistory """[
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"artist.name\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_artist\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"artist_name = getValue(\\\"artist.name\\\")\\nlowercase_name = artist_name.lower()\\ntokens = lowercase_name.split()\\n\\nuri = 'http://music_event_domain.org/'\\nfor token in tokens[:-1]:\\n    uri +=  token + '_'\\nuri += tokens[-1]\\n\\nreturn uri\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"artist.name\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_artist\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"location\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"city\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"import re\\n\\nlocation = getValue(\\\"location\\\")\\nif location != 'Not Defined':\\n    entities = re.split('-|,',location)\\n    if len(entities) > 0:\\n        return entities[0]\\nreturn location\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"location\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"location\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"state\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"location = getValue(\\\"location\\\")\\ntokens = location.split(' ')\\ncountry = ''\\nfor token in tokens[::-1]:\\n    if token.isupper():\\n        return token\\nreturn 'Not Defined'\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"location\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"state\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"location\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_city\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"import re\\n\\ndomain = 'http://music_event_domain.org/'\\nlocation = getValue(\\\"location\\\")\\nif location != 'Not Defined':\\n    entities = re.split('-|,',location)\\n    if len(entities) > 0:\\n        return domain + entities[0]\\nreturn domain + location\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"location\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"state\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_state\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"domain = 'http://music_event_domain.org/'\\nlocation = getValue(\\\"location\\\")\\ntokens = location.split(' ')\\ncountry = ''\\nfor token in tokens[::-1]:\\n    if token.isupper():\\n        return domain + token\\nreturn domain + 'Not Defined'\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"location\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_state\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"OrganizeColumnsCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"orderedColumns\",
+                \"type\": \"orderedColumns\",
+                \"value\": [
+                    {
+                        \"visible\": true,
+                        \"name\": \"artist.name\",
+                        \"id\": [{\"columnName\": \"artist.name\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"uri_artist\",
+                        \"id\": [{\"columnName\": \"uri_artist\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"terms\",
+                        \"id\": [{\"columnName\": \"terms\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"latitude\",
+                        \"id\": [{\"columnName\": \"latitude\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"longitude\",
+                        \"id\": [{\"columnName\": \"longitude\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"location\",
+                        \"id\": [{\"columnName\": \"location\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"city\",
+                        \"id\": [{\"columnName\": \"city\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"state\",
+                        \"id\": [{\"columnName\": \"state\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"artist.hotttnesss\",
+                        \"id\": [{\"columnName\": \"artist.hotttnesss\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"artist.id\",
+                        \"id\": [{\"columnName\": \"artist.id\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"artist_mbtags\",
+                        \"id\": [{\"columnName\": \"artist_mbtags\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"artist_mbtags_count\",
+                        \"id\": [{\"columnName\": \"artist_mbtags_count\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"bars_confidence\",
+                        \"id\": [{\"columnName\": \"bars_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"bars_start\",
+                        \"id\": [{\"columnName\": \"bars_start\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"beats_confidence\",
+                        \"id\": [{\"columnName\": \"beats_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"beats_start\",
+                        \"id\": [{\"columnName\": \"beats_start\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"duration\",
+                        \"id\": [{\"columnName\": \"duration\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"end_of_fade_in\",
+                        \"id\": [{\"columnName\": \"end_of_fade_in\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"familiarity\",
+                        \"id\": [{\"columnName\": \"familiarity\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"key\",
+                        \"id\": [{\"columnName\": \"key\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"key_confidence\",
+                        \"id\": [{\"columnName\": \"key_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"loudness\",
+                        \"id\": [{\"columnName\": \"loudness\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"mode\",
+                        \"id\": [{\"columnName\": \"mode\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"mode_confidence\",
+                        \"id\": [{\"columnName\": \"mode_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"release.id\",
+                        \"id\": [{\"columnName\": \"release.id\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"release.name\",
+                        \"id\": [{\"columnName\": \"release.name\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"similar\",
+                        \"id\": [{\"columnName\": \"similar\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"song.hotttnesss\",
+                        \"id\": [{\"columnName\": \"song.hotttnesss\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"song.id\",
+                        \"id\": [{\"columnName\": \"song.id\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"start_of_fade_out\",
+                        \"id\": [{\"columnName\": \"start_of_fade_out\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"tatums_confidence\",
+                        \"id\": [{\"columnName\": \"tatums_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"tatums_start\",
+                        \"id\": [{\"columnName\": \"tatums_start\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"tempo\",
+                        \"id\": [{\"columnName\": \"tempo\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"terms_freq\",
+                        \"id\": [{\"columnName\": \"terms_freq\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"time_signature\",
+                        \"id\": [{\"columnName\": \"time_signature\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"time_signature_confidence\",
+                        \"id\": [{\"columnName\": \"time_signature_confidence\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"title\",
+                        \"id\": [{\"columnName\": \"title\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"year\",
+                        \"id\": [{\"columnName\": \"year\"}]
+                    }
+                ]
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [
+            \"Transformation\",
+            \"IgnoreInBatch\"
+        ]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"artist.name\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist/Artist1 (add)\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"artist.name\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"artist.name\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"latitude\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"latitude\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"latitude\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"longitude\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"longitude\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"longitude\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"terms\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#genre\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"terms\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"terms\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_artist\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist/Artist1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_artist\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_artist\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"state\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State/State1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"state\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"state\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"city\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"city\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_city\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_state\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State/State1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_state\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_state\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"AddNodeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"label\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist/Artist1\"
+            },
+            {
+                \"name\": \"uri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\"
+            },
+            {
+                \"name\": \"id\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#performedBy\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddNodeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"label\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+            },
+            {
+                \"name\": \"uri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\"
+            },
+            {
+                \"name\": \"id\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    }
+]""" .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 a rr:TriplesMap .
+
+_:node1cur8rp3px1 km-dev:hasTriplesMap km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px2 rr:tableName "music artist with location.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasLogicalTable _:node1cur8rp3px2 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 rr:logicalTable _:node1cur8rp3px2 ;
+	rr:subjectMap _:node1cur8rp3px3 .
+
+_:node1cur8rp3px1 km-dev:hasSubjectMap _:node1cur8rp3px3 .
+
+_:node1cur8rp3px3 km-dev:isPartOfMapping _:node1cur8rp3px1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City> ;
+	rr:template "{uri_city}" .
+
+km-dev:PredicateObjectMap_a8b0a1ab-bdbb-4eea-a260-2da1975ac84f rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf> .
+
+km-dev:RefObjectMap_98258b28-1e98-4711-ac88-5978dd990b93 a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap km-dev:RefObjectMap_98258b28-1e98-4711-ac88-5978dd990b93 .
+
+km-dev:PredicateObjectMap_a8b0a1ab-bdbb-4eea-a260-2da1975ac84f rr:objectMap km-dev:RefObjectMap_98258b28-1e98-4711-ac88-5978dd990b93 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 rr:predicateObjectMap km-dev:PredicateObjectMap_a8b0a1ab-bdbb-4eea-a260-2da1975ac84f .
+
+km-dev:PredicateObjectMap_a8b0a1ab-bdbb-4eea-a260-2da1975ac84f a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_a8b0a1ab-bdbb-4eea-a260-2da1975ac84f .
+
+km-dev:PredicateObjectMap_359a1f23-c634-4dba-8dbe-80fac8adade5 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude> .
+
+_:node1cur8rp3px4 rr:column "latitude" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px4 .
+
+km-dev:PredicateObjectMap_359a1f23-c634-4dba-8dbe-80fac8adade5 rr:objectMap _:node1cur8rp3px4 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 rr:predicateObjectMap km-dev:PredicateObjectMap_359a1f23-c634-4dba-8dbe-80fac8adade5 .
+
+km-dev:PredicateObjectMap_359a1f23-c634-4dba-8dbe-80fac8adade5 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_359a1f23-c634-4dba-8dbe-80fac8adade5 .
+
+km-dev:PredicateObjectMap_457361b6-7de3-40cf-8a92-42e78650b8c8 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude> .
+
+_:node1cur8rp3px5 rr:column "longitude" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px5 .
+
+km-dev:PredicateObjectMap_457361b6-7de3-40cf-8a92-42e78650b8c8 rr:objectMap _:node1cur8rp3px5 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 rr:predicateObjectMap km-dev:PredicateObjectMap_457361b6-7de3-40cf-8a92-42e78650b8c8 .
+
+km-dev:PredicateObjectMap_457361b6-7de3-40cf-8a92-42e78650b8c8 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_457361b6-7de3-40cf-8a92-42e78650b8c8 .
+
+km-dev:PredicateObjectMap_ae64ff2a-1a7f-45c8-b54f-644fe7c5c614 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value> .
+
+_:node1cur8rp3px6 rr:column "city" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px6 .
+
+km-dev:PredicateObjectMap_ae64ff2a-1a7f-45c8-b54f-644fe7c5c614 rr:objectMap _:node1cur8rp3px6 .
+
+km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 rr:predicateObjectMap km-dev:PredicateObjectMap_ae64ff2a-1a7f-45c8-b54f-644fe7c5c614 .
+
+km-dev:PredicateObjectMap_ae64ff2a-1a7f-45c8-b54f-644fe7c5c614 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_ae64ff2a-1a7f-45c8-b54f-644fe7c5c614 .
+
+km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 a rr:TriplesMap .
+
+_:node1cur8rp3px1 km-dev:hasTriplesMap km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 .
+
+km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px7 rr:tableName "music artist with location.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasLogicalTable _:node1cur8rp3px7 .
+
+km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 rr:logicalTable _:node1cur8rp3px7 ;
+	rr:subjectMap _:node1cur8rp3px8 .
+
+_:node1cur8rp3px1 km-dev:hasSubjectMap _:node1cur8rp3px8 .
+
+_:node1cur8rp3px8 km-dev:isPartOfMapping _:node1cur8rp3px1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State> ;
+	rr:template "{uri_state}" .
+
+km-dev:PredicateObjectMap_c792b01d-c994-4939-ba5c-1dacb5fde09f rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value> .
+
+_:node1cur8rp3px9 rr:column "state" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px9 .
+
+km-dev:PredicateObjectMap_c792b01d-c994-4939-ba5c-1dacb5fde09f rr:objectMap _:node1cur8rp3px9 .
+
+km-dev:TriplesMap_d8baf4e4-1250-45bc-9863-b8f377bdabe7 rr:predicateObjectMap km-dev:PredicateObjectMap_c792b01d-c994-4939-ba5c-1dacb5fde09f .
+
+km-dev:PredicateObjectMap_c792b01d-c994-4939-ba5c-1dacb5fde09f a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_c792b01d-c994-4939-ba5c-1dacb5fde09f .
+
+km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 a rr:TriplesMap .
+
+_:node1cur8rp3px1 km-dev:hasTriplesMap km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 .
+
+km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px10 rr:tableName "music artist with location.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasLogicalTable _:node1cur8rp3px10 .
+
+km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 rr:logicalTable _:node1cur8rp3px10 ;
+	rr:subjectMap _:node1cur8rp3px11 .
+
+_:node1cur8rp3px1 km-dev:hasSubjectMap _:node1cur8rp3px11 .
+
+_:node1cur8rp3px11 km-dev:isPartOfMapping _:node1cur8rp3px1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert> ;
+	rr:termType rr:BlankNode ;
+	km-dev:namePrefix "Concert1" ;
+	a km-dev:steinerTreeRootNode .
+
+km-dev:PredicateObjectMap_85614b52-4888-4c66-a2bc-1741d986cfe2 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#performedBy> .
+
+km-dev:RefObjectMap_57d3b1a1-903f-4973-abb4-a10159395fb0 a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap km-dev:RefObjectMap_57d3b1a1-903f-4973-abb4-a10159395fb0 .
+
+km-dev:PredicateObjectMap_85614b52-4888-4c66-a2bc-1741d986cfe2 rr:objectMap km-dev:RefObjectMap_57d3b1a1-903f-4973-abb4-a10159395fb0 .
+
+km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 rr:predicateObjectMap km-dev:PredicateObjectMap_85614b52-4888-4c66-a2bc-1741d986cfe2 .
+
+km-dev:PredicateObjectMap_85614b52-4888-4c66-a2bc-1741d986cfe2 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_85614b52-4888-4c66-a2bc-1741d986cfe2 .
+
+km-dev:PredicateObjectMap_32b7df72-c71e-44b3-a7be-acd944d4f5e3 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt> .
+
+km-dev:RefObjectMap_ee4aa118-8f29-4a2c-97cf-3f1c55c6c4c1 a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_611fd1f1-8e2a-4dcf-b181-1c86fce84d15 ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap km-dev:RefObjectMap_ee4aa118-8f29-4a2c-97cf-3f1c55c6c4c1 .
+
+km-dev:PredicateObjectMap_32b7df72-c71e-44b3-a7be-acd944d4f5e3 rr:objectMap km-dev:RefObjectMap_ee4aa118-8f29-4a2c-97cf-3f1c55c6c4c1 .
+
+km-dev:TriplesMap_3157e160-2a8f-452e-a109-ec6ceef9fd05 rr:predicateObjectMap km-dev:PredicateObjectMap_32b7df72-c71e-44b3-a7be-acd944d4f5e3 .
+
+km-dev:PredicateObjectMap_32b7df72-c71e-44b3-a7be-acd944d4f5e3 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_32b7df72-c71e-44b3-a7be-acd944d4f5e3 .
+
+km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 a rr:TriplesMap .
+
+_:node1cur8rp3px1 km-dev:hasTriplesMap km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 .
+
+km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px12 rr:tableName "music artist with location.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasLogicalTable _:node1cur8rp3px12 .
+
+km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 rr:logicalTable _:node1cur8rp3px12 ;
+	rr:subjectMap _:node1cur8rp3px13 .
+
+_:node1cur8rp3px1 km-dev:hasSubjectMap _:node1cur8rp3px13 .
+
+_:node1cur8rp3px13 km-dev:isPartOfMapping _:node1cur8rp3px1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist> ;
+	rr:template "{uri_artist}" .
+
+km-dev:PredicateObjectMap_c4105b7a-9599-4d2b-b9b3-8ab9a2fbd49e rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName> .
+
+_:node1cur8rp3px14 rr:column "artist.name" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px14 .
+
+km-dev:PredicateObjectMap_c4105b7a-9599-4d2b-b9b3-8ab9a2fbd49e rr:objectMap _:node1cur8rp3px14 .
+
+km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 rr:predicateObjectMap km-dev:PredicateObjectMap_c4105b7a-9599-4d2b-b9b3-8ab9a2fbd49e .
+
+km-dev:PredicateObjectMap_c4105b7a-9599-4d2b-b9b3-8ab9a2fbd49e a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_c4105b7a-9599-4d2b-b9b3-8ab9a2fbd49e .
+
+km-dev:PredicateObjectMap_290bf256-4409-4376-8b88-5d3ea2cb994b rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#genre> .
+
+_:node1cur8rp3px15 rr:column "terms" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasObjectMap _:node1cur8rp3px15 .
+
+km-dev:PredicateObjectMap_290bf256-4409-4376-8b88-5d3ea2cb994b rr:objectMap _:node1cur8rp3px15 .
+
+km-dev:TriplesMap_d2593c2d-1d67-47da-80ae-1352c1b971b5 rr:predicateObjectMap km-dev:PredicateObjectMap_290bf256-4409-4376-8b88-5d3ea2cb994b .
+
+km-dev:PredicateObjectMap_290bf256-4409-4376-8b88-5d3ea2cb994b a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur8rp3px1 .
+
+_:node1cur8rp3px1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_290bf256-4409-4376-8b88-5d3ea2cb994b .

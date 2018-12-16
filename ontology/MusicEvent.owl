@@ -1,0 +1,459 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/ric/ontologies/2018/9/untitled-ontology-5#"
+     xml:base="http://www.semanticweb.org/ric/ontologies/2018/9/untitled-ontology-5"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Review"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Write a critical appraisal of (a book, play, film, etc.) for publication in a newspaper or magazine.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/review</rdfs:isDefinedBy>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf">
+        <rdfs:comment xml:lang="en">something determined in relation to something that includes it)</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=part&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=00000000000</rdfs:isDefinedBy>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#performedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#performedBy">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MusicEvent"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Present (a form of entertainment) to an audience.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://en.oxforddictionaries.com/definition/perform</rdfs:isDefinedBy>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:comment xml:lang="en">happen, occur at a given place</rdfs:comment>
+        <rdfs:isDefinedBy>https://en.oxforddictionaries.com/definition/take_place</rdfs:isDefinedBy>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#StartDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#StartDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Event"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The date on which something (especially a job) commences or begins; starting date.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://en.oxforddictionaries.com/definition/start_date</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#firstName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#firstName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A personal name given to someone at birth or baptism and used before a family name.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/first_name</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#genre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#genre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MusicEvent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A style or category of art, music, or literature.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/genre</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#lastName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#lastName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One&apos;s surname.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/last_name</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude">
+        <rdfs:comment xml:lang="en">the angular distance between an imaginary line around a heavenly body parallel to its equator and the equator itself</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=latitude&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=0</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:comment xml:lang="en">the angular distance between a point on any meridian and the prime meridian at Greenwich</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=longitude&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=0000</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The name by which an individual or (occasionally) a thing is identified or known; a first name.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/personal_name</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#score -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#score">
+        <rdfs:comment>
+            <rdf:Description>
+                <rdf:type>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#score"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#real"/>
+                    </owl:Restriction>
+                </rdf:type>
+                <rdfs:comment xml:lang="en">Normalized in [1,10]</rdfs:comment>
+            </rdf:Description>
+        </rdfs:comment>
+        <rdfs:comment xml:lang="en">a number or letter indicating quality</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">wordnetweb.princeton.edu/perl/webwn?s=score&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=0</rdfs:isDefinedBy>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#AdministrativeDivision -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#AdministrativeDivision">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Location"/>
+        <rdfs:comment xml:lang="en">a district defined for administrative purposes</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;s=administrative+division&amp;i=0&amp;h=0#c</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Person"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#hasReview"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Review"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#genre"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">a person whose creative work shows sensitivity and imagination</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=artist&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#AdministrativeDivision"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">a large and densely populated urban area; may include several independent administrative districts</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=city&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=1000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MusicEvent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A musical performance given in public, typically by several performers or of several compositions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://en.oxforddictionaries.com/definition/concert</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="en">concert</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#AdministrativeDivision"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">a politically organized body of people under a single government</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=country&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Event -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Event">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#StartDate"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">something that happens at a given place and time</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=event&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=1011231231230220000000000000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Location -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Location">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#PhysicalObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#rational"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A particular place or position.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">https://en.oxforddictionaries.com/definition/location</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MentalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MentalObject">
+        <rdfs:comment xml:lang="en">the sum or range of what has been perceived, discovered, or learned</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=mental+object&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=0</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MusicEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MusicEvent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#SocialEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#performedBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Artist"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Vocal or instrumental sounds (or both) combined in such a way as to produce beauty of form, harmony, and expression of emotion.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">https://en.oxforddictionaries.com/definition/music</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Person">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#PhysicalObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#personalName"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">a human being</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=person&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=00000000000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#PhysicalObject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#PhysicalObject">
+        <rdfs:comment xml:lang="en">a tangible and visible entity; an entity that can cast a shadow</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;s=physical+object</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Review -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Review">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#MentalObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#score"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">an essay or article that gives a critical evaluation (as of a book or play)</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;s=review&amp;h=000000000000000&amp;j=1#c</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#SocialEvent -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#SocialEvent">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Event"/>
+        <rdfs:comment xml:lang="en">an event characteristic of persons forming groups</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;s=event&amp;i=1&amp;h=100112312302000#c</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#AdministrativeDivision"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">the territory occupied by one of the constituent administrative districts of a nation</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?s=state&amp;sub=Search+WordNet&amp;o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;h=00000</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:comment xml:lang="en">or entity (that which is perceived or known or inferred to have its own distinct existence (living or nonliving))</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">http://wordnetweb.princeton.edu/perl/webwn?o2=&amp;o0=1&amp;o8=1&amp;o1=1&amp;o7=&amp;o5=&amp;o9=&amp;o6=&amp;o3=&amp;o4=&amp;s=entity&amp;i=0&amp;h=0#c</rdfs:isDefinedBy>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,1289 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix km-dev: <http://isi.edu/integration/karma/dev#> .
+
+_:node1cur84fq0x1 a km-dev:R2RMLMapping ;
+	km-dev:sourceName "PaisVasco2017Filtered.csv" ;
+	km-dev:modelPublicationTime "1544955248448"^^xsd:long ;
+	km-dev:modelVersion "1.7" ;
+	km-dev:hasInputColumns "[[{\"columnName\":\"Municipio (Nombre)\"}],[{\"columnName\":\"Fecha inicio evento\"}],[{\"columnName\":\"LATWGS84\"}],[{\"columnName\":\"LONWGS84\"}],[{\"columnName\":\"Pais (Nombre)\"}],[{\"columnName\":\"Nombre lugar\"}]]" ;
+	km-dev:hasOutputColumns "[[{\"columnName\":\"Municipio (Nombre)\"}],[{\"columnName\":\"uri_pais\"}],[{\"columnName\":\"Fecha inicio evento\"}],[{\"columnName\":\"uri_city\"}],[{\"columnName\":\"LATWGS84\"}],[{\"columnName\":\"uri_municipio\"}],[{\"columnName\":\"LONWGS84\"}],[{\"columnName\":\"Pais (Nombre)\"}],[{\"columnName\":\"Nombre lugar\"}]]" ;
+	km-dev:hasModelLabel "PaisVasco2017Filtered.csv" ;
+	km-dev:hasBaseURI "http://localhost:8080/source/" ;
+	km-dev:hasWorksheetHistory """[
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Municipio (Nombre)\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_municipio\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"value = getValue(\\\"Municipio (Nombre)\\\")\\nlowercase_name = value.lower()\\ntokens = lowercase_name.split()\\n\\nuri = 'http://music_event_domain.org/'\\nfor token in tokens[:-1]:\\n    uri +=  token + '_'\\nuri += tokens[-1]\\n\\nreturn uri\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Municipio (Nombre)\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_municipio\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Nombre lugar\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_city\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"value = getValue(\\\"Nombre lugar\\\")\\nlowercase_name = value.lower()\\ntokens = lowercase_name.split()\\n\\nuri = 'http://music_event_domain.org/'\\nfor token in tokens[:-1]:\\n    uri +=  token + '_'\\nuri += tokens[-1]\\n\\nreturn uri\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Nombre lugar\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"SubmitPythonTransformationCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Pais (Nombre)\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"newColumnName\",
+                \"type\": \"other\",
+                \"value\": \"uri_pais\"
+            },
+            {
+                \"name\": \"transformationCode\",
+                \"type\": \"other\",
+                \"value\": \"value = getValue(\\\"Pais (Nombre)\\\")\\nlowercase_name = value.lower()\\ntokens = lowercase_name.split()\\n\\nuri = 'http://music_event_domain.org/'\\nfor token in tokens[:-1]:\\n    uri +=  token + '_'\\nuri += tokens[-1]\\n\\nreturn uri\"
+            },
+            {
+                \"name\": \"errorDefaultValue\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"isJSONOutput\",
+                \"type\": \"other\",
+                \"value\": \"false\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Pais (Nombre)\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_pais\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"Transformation\"]
+    },
+    {
+        \"commandName\": \"OrganizeColumnsCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"orderedColumns\",
+                \"type\": \"orderedColumns\",
+                \"value\": [
+                    {
+                        \"visible\": true,
+                        \"name\": \"Fecha inicio evento\",
+                        \"id\": [{\"columnName\": \"Fecha inicio evento\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Pais (Nombre)\",
+                        \"id\": [{\"columnName\": \"Pais (Nombre)\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"uri_pais\",
+                        \"id\": [{\"columnName\": \"uri_pais\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Territorio histórico (Nombre)\",
+                        \"id\": [{\"columnName\": \"Territorio histórico (Nombre)\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Municipio (Nombre)\",
+                        \"id\": [{\"columnName\": \"Municipio (Nombre)\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"uri_municipio\",
+                        \"id\": [{\"columnName\": \"uri_municipio\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"LATWGS84\",
+                        \"id\": [{\"columnName\": \"LATWGS84\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"uri_city\",
+                        \"id\": [{\"columnName\": \"uri_city\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"LONWGS84\",
+                        \"id\": [{\"columnName\": \"LONWGS84\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Fecha inicio inscripción\",
+                        \"id\": [{\"columnName\": \"Fecha inicio inscripción\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Nombre lugar\",
+                        \"id\": [{\"columnName\": \"Nombre lugar\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Nombre\",
+                        \"id\": [{\"columnName\": \"Nombre\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Fecha fin inscripción\",
+                        \"id\": [{\"columnName\": \"Fecha fin inscripción\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Evento online\",
+                        \"id\": [{\"columnName\": \"Evento online\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Horario\",
+                        \"id\": [{\"columnName\": \"Horario\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Fecha fin evento\",
+                        \"id\": [{\"columnName\": \"Fecha fin evento\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Precio\",
+                        \"id\": [{\"columnName\": \"Precio\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Lenguajes del evento\",
+                        \"id\": [{\"columnName\": \"Lenguajes del evento\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Tipo de evento\",
+                        \"id\": [{\"columnName\": \"Tipo de evento\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Coordenadas GPS\",
+                        \"id\": [{\"columnName\": \"Coordenadas GPS\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Municipio\",
+                        \"id\": [{\"columnName\": \"Municipio\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Código municipio\",
+                        \"id\": [{\"columnName\": \"Código municipio\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Provincia\",
+                        \"id\": [{\"columnName\": \"Provincia\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Código provincia\",
+                        \"id\": [{\"columnName\": \"Código provincia\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"País\",
+                        \"id\": [{\"columnName\": \"País\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Código país\",
+                        \"id\": [{\"columnName\": \"Código país\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"URL amigable\",
+                        \"id\": [{\"columnName\": \"URL amigable\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"URL física\",
+                        \"id\": [{\"columnName\": \"URL física\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"XML datos\",
+                        \"id\": [{\"columnName\": \"XML datos\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"XML metadatos\",
+                        \"id\": [{\"columnName\": \"XML metadatos\"}]
+                    },
+                    {
+                        \"visible\": true,
+                        \"name\": \"Zip\",
+                        \"id\": [{\"columnName\": \"Zip\"}]
+                    }
+                ]
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [
+            \"Transformation\",
+            \"IgnoreInBatch\"
+        ]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Fecha inicio evento\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#StartDate\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert/Concert1 (add)\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"es\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Fecha inicio evento\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Fecha inicio evento\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Municipio (Nombre)\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State/State1 (add)\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Municipio (Nombre)\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Municipio (Nombre)\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_municipio\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State/State1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"es\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_municipio\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_municipio\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Nombre lugar\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1 (add)\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"es\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Nombre lugar\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Nombre lugar\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"LATWGS84\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"LATWGS84\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"LATWGS84\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"LONWGS84\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"LONWGS84\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"LONWGS84\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_city\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City/City1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_city\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetSemanticTypeCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"Pais (Nombre)\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country/Country1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"es\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Pais (Nombre)\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"Pais (Nombre)\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"SetMetaPropertyCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"hNodeId\",
+                \"type\": \"hNodeId\",
+                \"value\": [{\"columnName\": \"uri_pais\"}]
+            },
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"selectionName\",
+                \"type\": \"other\",
+                \"value\": \"DEFAULT_TEST\"
+            },
+            {
+                \"name\": \"metaPropertyName\",
+                \"type\": \"other\",
+                \"value\": \"isUriOfClass\"
+            },
+            {
+                \"name\": \"metaPropertyUri\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country\"
+            },
+            {
+                \"name\": \"metaPropertyId\",
+                \"type\": \"other\",
+                \"value\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country1\"
+            },
+            {
+                \"name\": \"SemanticTypesArray\",
+                \"type\": \"other\",
+                \"value\": [{
+                    \"DomainUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country\",
+                    \"DomainId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country1\",
+                    \"isPrimary\": true,
+                    \"isProvenance\": false,
+                    \"FullType\": \"http://isi.edu/integration/karma/dev#classLink\",
+                    \"DomainLabel\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country/Country1\"
+                }]
+            },
+            {
+                \"name\": \"trainAndShowUpdates\",
+                \"type\": \"other\",
+                \"value\": true
+            },
+            {
+                \"name\": \"rdfLiteralType\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"language\",
+                \"type\": \"other\",
+                \"value\": \"\"
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_pais\\\"}]}]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[{\\\"value\\\":[{\\\"columnName\\\":\\\"uri_pais\\\"}]}]\"
+            }
+        ],
+        \"tags\": [\"SemanticType\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    },
+    {
+        \"commandName\": \"AddLinkCommand\",
+        \"model\": \"new\",
+        \"inputParameters\": [
+            {
+                \"name\": \"worksheetId\",
+                \"type\": \"worksheetId\",
+                \"value\": \"W\"
+            },
+            {
+                \"name\": \"edge\",
+                \"type\": \"other\",
+                \"value\": {
+                    \"edgeTargetId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1\",
+                    \"edgeId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt\",
+                    \"edgeTargetUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City\",
+                    \"edgeSourceId\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1\",
+                    \"edgeSourceUri\": \"http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert\"
+                }
+            },
+            {
+                \"name\": \"inputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            },
+            {
+                \"name\": \"outputColumns\",
+                \"type\": \"hNodeIdList\",
+                \"value\": \"[]\"
+            }
+        ],
+        \"tags\": [\"Modeling\"]
+    }
+]""" .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 a rr:TriplesMap .
+
+_:node1cur84fq0x1 km-dev:hasTriplesMap km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x2 rr:tableName "PaisVasco2017Filtered.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasLogicalTable _:node1cur84fq0x2 .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 rr:logicalTable _:node1cur84fq0x2 ;
+	rr:subjectMap _:node1cur84fq0x3 .
+
+_:node1cur84fq0x1 km-dev:hasSubjectMap _:node1cur84fq0x3 .
+
+_:node1cur84fq0x3 km-dev:isPartOfMapping _:node1cur84fq0x1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#City> ;
+	rr:template "{uri_city}" .
+
+km-dev:PredicateObjectMap_01e296b9-fb40-43fd-a59c-4879c4bdb2f8 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf> .
+
+km-dev:RefObjectMap_22f8d498-1fdd-4215-977e-44695b7455ec a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap km-dev:RefObjectMap_22f8d498-1fdd-4215-977e-44695b7455ec .
+
+km-dev:PredicateObjectMap_01e296b9-fb40-43fd-a59c-4879c4bdb2f8 rr:objectMap km-dev:RefObjectMap_22f8d498-1fdd-4215-977e-44695b7455ec .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 rr:predicateObjectMap km-dev:PredicateObjectMap_01e296b9-fb40-43fd-a59c-4879c4bdb2f8 .
+
+km-dev:PredicateObjectMap_01e296b9-fb40-43fd-a59c-4879c4bdb2f8 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_01e296b9-fb40-43fd-a59c-4879c4bdb2f8 .
+
+km-dev:PredicateObjectMap_f71137ab-abd5-40b2-9ab6-82049793bf87 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#latitude> .
+
+_:node1cur84fq0x4 rr:column "LATWGS84" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x4 .
+
+km-dev:PredicateObjectMap_f71137ab-abd5-40b2-9ab6-82049793bf87 rr:objectMap _:node1cur84fq0x4 .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 rr:predicateObjectMap km-dev:PredicateObjectMap_f71137ab-abd5-40b2-9ab6-82049793bf87 .
+
+km-dev:PredicateObjectMap_f71137ab-abd5-40b2-9ab6-82049793bf87 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_f71137ab-abd5-40b2-9ab6-82049793bf87 .
+
+km-dev:PredicateObjectMap_e98db4e8-f398-4d35-a7cc-9a712b33737e rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#longitude> .
+
+_:node1cur84fq0x5 rr:column "LONWGS84" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x5 .
+
+km-dev:PredicateObjectMap_e98db4e8-f398-4d35-a7cc-9a712b33737e rr:objectMap _:node1cur84fq0x5 .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 rr:predicateObjectMap km-dev:PredicateObjectMap_e98db4e8-f398-4d35-a7cc-9a712b33737e .
+
+km-dev:PredicateObjectMap_e98db4e8-f398-4d35-a7cc-9a712b33737e a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_e98db4e8-f398-4d35-a7cc-9a712b33737e .
+
+km-dev:PredicateObjectMap_161d9a26-5c98-421f-8024-00dd23c4454c rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value> .
+
+_:node1cur84fq0x6 rr:column "Nombre lugar" ;
+	a rr:ObjectMap ;
+	rr:language "es" ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x6 .
+
+km-dev:PredicateObjectMap_161d9a26-5c98-421f-8024-00dd23c4454c rr:objectMap _:node1cur84fq0x6 .
+
+km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 rr:predicateObjectMap km-dev:PredicateObjectMap_161d9a26-5c98-421f-8024-00dd23c4454c .
+
+km-dev:PredicateObjectMap_161d9a26-5c98-421f-8024-00dd23c4454c a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_161d9a26-5c98-421f-8024-00dd23c4454c .
+
+km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a a rr:TriplesMap .
+
+_:node1cur84fq0x1 km-dev:hasTriplesMap km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a .
+
+km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x7 rr:tableName "PaisVasco2017Filtered.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasLogicalTable _:node1cur84fq0x7 .
+
+km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a rr:logicalTable _:node1cur84fq0x7 ;
+	rr:subjectMap _:node1cur84fq0x8 .
+
+_:node1cur84fq0x1 km-dev:hasSubjectMap _:node1cur84fq0x8 .
+
+_:node1cur84fq0x8 km-dev:isPartOfMapping _:node1cur84fq0x1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#State> ;
+	rr:template "{uri_municipio}" .
+
+km-dev:PredicateObjectMap_d579bbcb-110b-4f2a-9fd9-e588d0408120 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#partOf> .
+
+km-dev:RefObjectMap_58ee91b8-97a1-4ac8-bad0-4572037bc2f0 a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap km-dev:RefObjectMap_58ee91b8-97a1-4ac8-bad0-4572037bc2f0 .
+
+km-dev:PredicateObjectMap_d579bbcb-110b-4f2a-9fd9-e588d0408120 rr:objectMap km-dev:RefObjectMap_58ee91b8-97a1-4ac8-bad0-4572037bc2f0 .
+
+km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a rr:predicateObjectMap km-dev:PredicateObjectMap_d579bbcb-110b-4f2a-9fd9-e588d0408120 .
+
+km-dev:PredicateObjectMap_d579bbcb-110b-4f2a-9fd9-e588d0408120 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_d579bbcb-110b-4f2a-9fd9-e588d0408120 .
+
+km-dev:PredicateObjectMap_10e312ff-3419-445e-bec1-2ecc2d74002d rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value> .
+
+_:node1cur84fq0x9 rr:column "Municipio (Nombre)" ;
+	a rr:ObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x9 .
+
+km-dev:PredicateObjectMap_10e312ff-3419-445e-bec1-2ecc2d74002d rr:objectMap _:node1cur84fq0x9 .
+
+km-dev:TriplesMap_13e3590d-5b23-4d6d-afd4-04c7c891368a rr:predicateObjectMap km-dev:PredicateObjectMap_10e312ff-3419-445e-bec1-2ecc2d74002d .
+
+km-dev:PredicateObjectMap_10e312ff-3419-445e-bec1-2ecc2d74002d a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_10e312ff-3419-445e-bec1-2ecc2d74002d .
+
+km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 a rr:TriplesMap .
+
+_:node1cur84fq0x1 km-dev:hasTriplesMap km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 .
+
+km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x10 rr:tableName "PaisVasco2017Filtered.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasLogicalTable _:node1cur84fq0x10 .
+
+km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 rr:logicalTable _:node1cur84fq0x10 ;
+	rr:subjectMap _:node1cur84fq0x11 .
+
+_:node1cur84fq0x1 km-dev:hasSubjectMap _:node1cur84fq0x11 .
+
+_:node1cur84fq0x11 km-dev:isPartOfMapping _:node1cur84fq0x1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Concert> ;
+	rr:termType rr:BlankNode ;
+	km-dev:namePrefix "Concert1" ;
+	a km-dev:steinerTreeRootNode .
+
+km-dev:PredicateObjectMap_2d113a56-b05b-45c7-bc6a-0fab803a650e rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#takesPlaceAt> .
+
+km-dev:RefObjectMap_7e778550-69cd-4dcc-ac57-bbe5ea174ccb a rr:RefObjectMap , rr:ObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_c8e4855e-924c-4bce-a3ea-5a7521ee0e66 ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap km-dev:RefObjectMap_7e778550-69cd-4dcc-ac57-bbe5ea174ccb .
+
+km-dev:PredicateObjectMap_2d113a56-b05b-45c7-bc6a-0fab803a650e rr:objectMap km-dev:RefObjectMap_7e778550-69cd-4dcc-ac57-bbe5ea174ccb .
+
+km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 rr:predicateObjectMap km-dev:PredicateObjectMap_2d113a56-b05b-45c7-bc6a-0fab803a650e .
+
+km-dev:PredicateObjectMap_2d113a56-b05b-45c7-bc6a-0fab803a650e a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_2d113a56-b05b-45c7-bc6a-0fab803a650e .
+
+km-dev:PredicateObjectMap_c883c347-a1ee-4090-8aea-57060be1a7d8 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#StartDate> .
+
+_:node1cur84fq0x12 rr:column "Fecha inicio evento" ;
+	a rr:ObjectMap ;
+	rr:language "es" ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x12 .
+
+km-dev:PredicateObjectMap_c883c347-a1ee-4090-8aea-57060be1a7d8 rr:objectMap _:node1cur84fq0x12 .
+
+km-dev:TriplesMap_12bb24e3-b63d-4c5d-9a60-7d35912dc2d9 rr:predicateObjectMap km-dev:PredicateObjectMap_c883c347-a1ee-4090-8aea-57060be1a7d8 .
+
+km-dev:PredicateObjectMap_c883c347-a1ee-4090-8aea-57060be1a7d8 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_c883c347-a1ee-4090-8aea-57060be1a7d8 .
+
+km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc a rr:TriplesMap .
+
+_:node1cur84fq0x1 km-dev:hasTriplesMap km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc .
+
+km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x13 rr:tableName "PaisVasco2017Filtered.csv" ;
+	a rr:LogicalTable ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasLogicalTable _:node1cur84fq0x13 .
+
+km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc rr:logicalTable _:node1cur84fq0x13 ;
+	rr:subjectMap _:node1cur84fq0x14 .
+
+_:node1cur84fq0x1 km-dev:hasSubjectMap _:node1cur84fq0x14 .
+
+_:node1cur84fq0x14 km-dev:isPartOfMapping _:node1cur84fq0x1 ;
+	a rr:SubjectMap ;
+	km-dev:alignmentNodeId "http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country1" ;
+	rr:class <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#Country> ;
+	rr:template "{uri_pais}" .
+
+km-dev:PredicateObjectMap_0456b25f-4ae5-4dbc-9472-6442f5ad4ea8 rr:predicate <http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#value> .
+
+_:node1cur84fq0x15 rr:column "Pais (Nombre)" ;
+	a rr:ObjectMap ;
+	rr:language "es" ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasObjectMap _:node1cur84fq0x15 .
+
+km-dev:PredicateObjectMap_0456b25f-4ae5-4dbc-9472-6442f5ad4ea8 rr:objectMap _:node1cur84fq0x15 .
+
+km-dev:TriplesMap_aa3e7548-365a-4ffa-8b55-b2ba559701dc rr:predicateObjectMap km-dev:PredicateObjectMap_0456b25f-4ae5-4dbc-9472-6442f5ad4ea8 .
+
+km-dev:PredicateObjectMap_0456b25f-4ae5-4dbc-9472-6442f5ad4ea8 a rr:PredicateObjectMap ;
+	km-dev:isPartOfMapping _:node1cur84fq0x1 .
+
+_:node1cur84fq0x1 km-dev:hasPredicateObjectMap km-dev:PredicateObjectMap_0456b25f-4ae5-4dbc-9472-6442f5ad4ea8 .

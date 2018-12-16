@@ -1,0 +1,15 @@
+PREFIX rr:<http://www.w3.org/ns/r2rml#>
+PREFIX karma:<http://isi.edu/integration/karma/ontologies/model/current#>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX km-dev:<http://isi.edu/integration/karma/dev#>
+PREFIX xsd:<http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX domain:<http://music_event_domain.org/>
+PREFIX ontology:<http://www.semanticweb.org/ric/ontologies/2018/9/musicEvent#>
+
+SELECT ?review
+WHERE {
+    ?artist rdf:type ontology:Artist .
+    ?artist ontology:hasReview ?review .
+}
